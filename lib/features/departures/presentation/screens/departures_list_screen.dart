@@ -33,7 +33,7 @@ class DeparturesListScreen extends StatelessWidget {
         ),
       child: AppScaffold(
         title: context.tr.departures_list_title,
-        body: DeparturesListBody(),
+        body: DeparturesListBody(stopId: stopId),
       ),
     );
   }

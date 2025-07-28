@@ -51,7 +51,7 @@ class _StopsListBodyState extends State<StopsListBody> {
                 : Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(Dimens.s16),
+                        padding: EdgeInsets.symmetric(horizontal: Dimens.s16),
                         child: SearchTextField(
                           onSearch: (value) {
                             setState(() {
@@ -60,11 +60,11 @@ class _StopsListBodyState extends State<StopsListBody> {
                           },
                         ),
                       ),
-                      stops.isEmpty
-                          ? EmptyBody()
-                          : Expanded(
-                              child: StopsListview(stops: stops),
-                            ),
+                      Expanded(
+                        child: stops.isEmpty
+                            ? EmptyBody()
+                            : StopsListview(stops: stops),
+                      ),
                     ],
                   );
           case StopsListStateFailure():
@@ -83,6 +83,7 @@ class StopsListview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      padding: EdgeInsets.only(top: Dimens.s16),
       itemBuilder: (_, index) {
         var stop = stops[index];
         return ListTile(

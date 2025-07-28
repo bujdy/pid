@@ -13,24 +13,33 @@ import '../../application/departures_list_bloc.dart';
 import '../../infrastructure/dto/departures_dto.dart';
 
 class DeparturesListBody extends StatelessWidget {
-  const DeparturesListBody({super.key});
+  const DeparturesListBody({super.key, required this.stopId});
+
+  final String stopId;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DeparturesListBloc, DeparturesListState>(
-        builder: (context, state) {
-      switch (state) {
-        case DeparturesListStateIdle():
-        case DeparturesListStateLoading():
-          return AppLoader();
-        case DeparturesListStateSuccess():
-          return state.departureBoards.isEmpty
-              ? EmptyBody()
-              : DeparturesListView(departureBoards: state.departureBoards);
-        case DeparturesListStateFailure():
-          return FailureBody();
-      }
-    });
+    return RefreshIndicator(
+      onRefresh: () async {
+        context
+            .read<DeparturesListBloc>()
+            .add(DeparturesListRequested(stopId: stopId));
+      },
+      child: BlocBuilder<DeparturesListBloc, DeparturesListState>(
+          builder: (context, state) {
+        switch (state) {
+          case DeparturesListStateIdle():
+          case DeparturesListStateLoading():
+            return AppLoader();
+          case DeparturesListStateSuccess():
+            return state.departureBoards.isEmpty
+                ? EmptyBody()
+                : DeparturesListView(departureBoards: state.departureBoards);
+          case DeparturesListStateFailure():
+            return FailureBody();
+        }
+      }),
+    );
   }
 }
 
