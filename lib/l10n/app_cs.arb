@@ -1,0 +1,7 @@
+{
+    "stops_list_title": "Seznam zastávek",
+    "departures_list_title":"Odjezdy ze zastávky",
+    "search_hint":"Hledat...",
+    "time_min": "min",
+    "empty_list": "Nepodařilo se načíst žádné položky."
+}
