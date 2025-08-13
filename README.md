@@ -59,3 +59,7 @@ Tento dokument obsahuje instrukce pro kompilaci, spuštění a konfiguraci aplik
 - Ujistěte se, že máte nainstalované všechny potřebné nástroje pro vývoj ve Flutteru (Dart, Android SDK, případně Xcode pro iOS).
 - Pokud narazíte na problémy s kompilací, zkontrolujte verzi Flutteru a aktualizujte závislosti.
 - API token je citlivá informace – nikdy jej nesdílejte veřejně.
+
+## TODO
+- Move colors and text styles into ThemeData
+- Define entities in the domain layer (not just using DTOs)
