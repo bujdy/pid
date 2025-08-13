@@ -70,3 +70,8 @@ Future<void> injection(WidgetsBinding binding) async {
     () => VehicleLocationBloc(vehicleRepository: getIt()),
   );
 }
+
+@visibleForTesting
+void injectionWidgetTest(GetIt instance) {
+  getIt = instance;
+}
