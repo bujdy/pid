@@ -44,4 +44,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+/lib/l10n/app_localizations*
+
 *.env
